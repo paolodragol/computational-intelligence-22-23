@@ -1,2 +1,2 @@
-# computational-intelligence-22-23
+# Computational Intelligence (2022-2023)
 Politecnico di Torino - CI course repository
