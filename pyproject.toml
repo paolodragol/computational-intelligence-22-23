@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "computational-intelligence-22-23"
+version = "0.1.0"
+description = "Computational Intelligence Laboratory Package for 2022/23 course at Politecnico di Torino"
+authors = ["DRAGO LEON Paolo s296101 <s296101@studenti.polito.it>"]
+license = "MIT Licence"
+readme = "README.md"
+packages = [{include = "computational_intelligence_22_23"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+jupyter = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
