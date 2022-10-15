@@ -19,6 +19,8 @@ scipy = "^1.9.2"
 seaborn = "^0.12.0"
 tqdm = "^4.64.1"
 toml = "^0.10.2"
+black = {extras = ["jupyter"], version = "^22.10.0"}
+nero = {extras = ["jupyter"], version = "^1.0.20220202"}
 
 
 [build-system]
