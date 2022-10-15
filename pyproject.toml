@@ -10,6 +10,15 @@ packages = [{include = "computational_intelligence_22_23"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 jupyter = "^1.0.0"
+matplotlib = "^3.6.1"
+networkx = "^2.8.7"
+numpy = "^1.23.4"
+pandas = "^1.5.0"
+pydot = "^1.4.2"
+scipy = "^1.9.2"
+seaborn = "^0.12.0"
+tqdm = "^4.64.1"
+toml = "^0.10.2"
 
 
 [build-system]
