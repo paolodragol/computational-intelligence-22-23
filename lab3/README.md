@@ -98,3 +98,8 @@ Evolving the population, the results against the different strategies were:
 | level_three       | 0.6125        |
 | expert_strategy   | 0.0           |
 
+### **References**
+
+* *Nimsum* theory and approaches: [Wikipedia: Nim](https://en.wikipedia.org/wiki/Nim)
+* *Adaptive (μ+λ)-ES* was taken from **rastrigin** algorithm of profesor Squillero: [github.com/squillero](https://github.com/squillero/computational-intelligence/blob/master/2021-22/rastrigin.ipynb)
+* Collaboration and ideas were shared with: *Giovanni Genna*. 
