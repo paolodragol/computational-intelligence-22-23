@@ -4,6 +4,7 @@ from typing import Callable
 from collections import namedtuple
 import random
 import functools
+from functools import cache
 from collections import Counter
 import numpy as np
 
@@ -96,6 +97,7 @@ def cook_status(state: Nim) -> dict:
         
 
     return cooked
+
 
 
 ################################# STRATEGIES #################################
@@ -228,6 +230,19 @@ def expert_strategy(board: Nim) -> Nimply:
         logging.debug(f"Expert removed {num_to_remove}, from row {chosen_idx+1}")
         return ply
 
+# MinMax
+def minmax_strategy(board: Nim) -> Nimply:
+    best = best_move(board) 
+    if best is not None:
+        _, new_state = best
+        for idx, (curr_row, new_row) in enumerate(zip(board.rows, new_state)):
+            if curr_row != new_row:
+                return Nimply(idx, curr_row - new_row)
+    else:
+        idx = board.rows.index(max(board.rows))
+        return Nimply(idx, 1)
+
+
 
 # Human Move
 def make_human_move(board: Nim) -> Nimply:
@@ -246,6 +261,7 @@ def make_human_move(board: Nim) -> Nimply:
     ply = Nimply(selected_row, num_objs)
     print(f"You have removed {num_objs}, from row {selected_row+1}")
     return ply
+
 
 
 ################################# PLAY #######################################
@@ -281,7 +297,6 @@ def evaluate(strategy: Callable, other_strategy: Callable, k=None, nim_size=10) 
         if winner_second == 1:
             won_2 += 1
     return won_1 / NUM_MATCHES, won_2 / NUM_MATCHES
-
 
 
 
@@ -490,6 +505,63 @@ def adaptive_es(opponent_strategy, strategy_name, initial_population=None):
     
     return fitness.max(), population
 
+
+
+############################### MinMax #####################################
+MAX_DEPTH = 35 # defined empirically for a "fast" game
+
+# Check terminal state
+def check_teminal(rows, is_maximizing) -> int:
+    if sum(rows) == 0:
+        return -1 if is_maximizing else 1
+
+# Get moves
+def possible_new_states(rows):
+    checked = set()
+    for row, num_objs in enumerate(rows):
+        for remain in range(num_objs):
+            tuple_to_return = rows[:row] + (remain,) + rows[row + 1 :]
+            if tuple(sorted(tuple_to_return)) in checked:
+                continue
+            else:
+                checked.add(tuple(sorted(tuple_to_return)))
+                yield tuple_to_return 
+
+# Minmax
+@cache
+def minmax(rows, depth, is_maximizing, alpha=-1, beta=1):
+    if (score := check_teminal(rows, is_maximizing)) is not None:
+        return score
+    # Over a certain depth, return zero
+    if depth >= MAX_DEPTH:
+        return 0
+        
+    scores = []
+    for new_state in possible_new_states(rows):
+        score = minmax(new_state, depth+1, not is_maximizing, alpha, beta)
+        if score == 0:
+            return 0
+        scores.append(score)
+        if is_maximizing:
+            # Update alpha: min score of maximizing player
+            alpha = max(alpha, score)
+        else:
+            # Update beta: maximum score of minimizing player
+            beta = min(beta, score)
+        # Do not consider further moves (maximizer already found a better solution than any of the unexplored ones)
+        if beta <= alpha:
+            break
+    return (max if is_maximizing else min)(scores)
+    
+# Best move
+def best_move(state: Nim) -> Nimply:
+    maximum =  max(
+        (minmax(new_state, depth=0, is_maximizing=False), new_state) for new_state in possible_new_states(state.rows)
+    )
+    return maximum if maximum != 0 else None
+
+
+
 ############################### Human ######################################
 
 # Play agains human
@@ -522,3 +594,5 @@ def play_nim_human(num_of_heaps: int, first='human', display_board=False) -> Non
 
     return
 
+if __name__ == "__main__":
+    print("Hello")
