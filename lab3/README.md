@@ -98,8 +98,34 @@ Evolving the population, the results against the different strategies were:
 | level_three       | 0.6125        |
 | expert_strategy   | 0.0           |
 
+
+## **Task 3.3: An agent using minmax**
+
+The solution proposed for the *minmax* strategy is completely based on the solution proposed by [Real Python](https://realpython.com/python-minimax-nim/). 
+
+The `nim_utils.py` file imports the already defined functions and classes in the first tasks.  
+
+Some modifications to the solution proposed by the authors were made to try to optimize the problem, given the high dimensionality and branching factor of Nim. 
+- As a first step, as suggested, I used `@cache` in order to memorize already calculated steps. 
+- Secondly, when calculating the possible new steps, tuples were organized and added to a set in order to avoid considering symmetrical solutions.
+- Finally, I defined an empirical *MAX_DEPTH* in order to avoid going too deep in the decision tree, when the tree becomes considerably large. This depth was determined by trying different values and selecting one which provided a good tradeoff between the solution found and the computational cost. It may be improved with a more deterministic approach. 
+
+The **minmax_strategy** aims to use the minmax approach to play the game as in points 3.1 and 3.2. After running the `evaluate` method agains some of the hard-coded strategies with different Nim sizes, the results we obtain are the ones expected:
+
+
+| Opponent Strategy | Starting (first, second)  | Nim Size                  |
+| ----------------- | ------------------------- | ------------------------- |  
+| pure_random       | (1.0, 1.0)                | 6                         |
+| level_three       | (1.0, 1.0)                | 5                         |
+| expert_strategy   | (1.0, 0.0)                | 6                         |
+| ----------------- | ------------------------- | ------------------------- |  
+| pure_random       | (1.0, 1.0)                | 10                        |
+| level_three       | (1.0, 1.0)                | 7                         |
+| expert_strategy   | (0.0, 0.0)                | 8                         |
+
+
 ### **References**
 
 * *Nimsum* theory and approaches: [Wikipedia: Nim](https://en.wikipedia.org/wiki/Nim)
 * *Adaptive (μ+λ)-ES* was taken from **rastrigin** algorithm of profesor Squillero: [github.com/squillero](https://github.com/squillero/computational-intelligence/blob/master/2021-22/rastrigin.ipynb)
-* Collaboration and ideas were shared with: *Giovanni Genna*. 
+* Collaboration and ideas were shared with: *Giovanni Genna* and *Krzysztof Kleist*. 
