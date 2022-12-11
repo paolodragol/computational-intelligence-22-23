@@ -195,6 +195,36 @@ I noticed that the results were good for almost all of them except the expert st
 
 This results are impressive, in my opinion. I notice some inversion trend in the performance from one strategy to the other which may be seen in the plots, and I do not understand it, but I think it is still remarkably better than before.
 
+I modified the `play_nim` and `evaluate` functions in order to evaluate the RL Agent (the new functions are `play_nim_rl` and `evaluate_rl`). Also I added a `rl_strategy` function which creates the strategy of an Agent in order to make it play against the other strategies. Here are the results of the evaluation for the Agent which learns from scratch:
+
+
+| Opponent Strategy | Starting (first, second)  | Nim Size                  |
+| ----------------- | ------------------------- | ------------------------- |  
+| pure_random       | (1.0, 1.0)                | 3                         |
+| level_three       | (1.0, 0.0)                | 3                         |
+| expert_strategy   | (1.0, 0.0)                | 3                         |
+|                   |                           |                           |  
+| pure_random       | (0.9, 0.8)                | 5                         |
+| level_three       | (1.0, 1.0)                | 5                         |
+| expert_strategy   | (0.0, 0.0)                | 5                         |
+
+
+And here are the results of the evaluation for the Agent which learns incrementally:
+
+
+| Opponent Strategy | Starting (first, second)  | Nim Size                  |
+| ----------------- | ------------------------- | ------------------------- |  
+| pure_random       | (1.0, 1.0)                | 3                         |
+| level_three       | (1.0, 0.0)                | 3                         |
+| expert_strategy   | (1.0, 0.0)                | 3                         |
+|                   |                           |                           |  
+| pure_random       | (1.0, 0.9)                | 5                         |
+| level_three       | (1.0, 0.0)                | 5                         |
+| expert_strategy   | (0.0, 0.0)                | 5                         |
+
+
+I notice the results are not as good as expected on both cases, which lead to very similar results. Moreover, the strategy that learns from scratch is able to to win all the games starting second against `level_three` whereas none with the incremental strategy. 
+
 I believe the solution proposed can be improved (in many ways...). For instance, considering both starting first and second during the RL phase may be beneficial. Moreover, the lack of improvement using the incremental approach may be analyzed. A more suitable reward approach may also be taken into account. I tried to use an approach that had no idea of the problem or its solutions.  
 
 ### **References**

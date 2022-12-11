@@ -1,7 +1,6 @@
 import numpy as np
 from nim_utils import Nimply
 
-#ACTIONS = {'U': (-1, 0), 'D': (1, 0), 'L': (0, -1), 'R': (0, 1)}
 
 class NimBoard(object):
     def __init__(self, num_rows: int, k: int = None) -> None:
