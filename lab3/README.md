@@ -129,7 +129,7 @@ The **minmax_strategy** aims to use the minmax approach to play the game as in p
 
 However, the computational cost for this solution is very high. 
 
-## **Task3.4: An agent using reinforcement learning (RL)**
+## **Task 3.4: An agent using reinforcement learning (RL)**
 
 To use a RL approach the solution provided from [Towards Data Science](https://towardsdatascience.com/hands-on-introduction-to-reinforcement-learning-in-python-da07f7aaca88) was adapted to the Nim problem.
 
