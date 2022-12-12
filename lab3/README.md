@@ -94,11 +94,11 @@ Evolving the population, the results against the different strategies were:
 | ----------------- | ------------- |  
 | level_zero        | 1.0           |  
 | pure_random       | 1.0           |  
-| level_two         | 0.725         |
-| level_three       | 0.6125        |
+| level_two         | 0.61          |
+| level_three       | 0.50          |
 | expert_strategy   | 0.0           |
 
-The results are encouraging and I expected worse values for the metric.
+The results are encouraging and I expected worse values for the metric. However, these values seem to saturate pretty quickly.
 
 ## **Task 3.3: An agent using minmax**
 
@@ -233,4 +233,4 @@ I believe the solution proposed can be improved (in many ways...). For instance,
 * *Adaptive (μ+λ)-ES* was taken from **rastrigin** algorithm of profesor Squillero: [github.com/squillero](https://github.com/squillero/computational-intelligence/blob/master/2021-22/rastrigin.ipynb)
 * The *MinMax* approach: [Real Python](https://realpython.com/python-minimax-nim/)
 * *RL* approach modified and corrected by Andrea Calabrese: [Towards Data Science](https://towardsdatascience.com/hands-on-introduction-to-reinforcement-learning-in-python-da07f7aaca88)   
-* Collaboration and ideas were shared with: *Giovanni Genna* and *Krzysztof Kleist*. 
+* Collaboration and ideas were shared with: *Giovanni Genna*, *Krzysztof Kleist* and *Luigi Federico*. 
