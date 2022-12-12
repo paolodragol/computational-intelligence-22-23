@@ -183,15 +183,15 @@ I noticed that the results were good for almost all of them except the expert st
 | ----------------- | ------------------------- | ------------------------- |
 | level_zero        | (0.824, 0.981)            | 3                         |  
 | pure_random       | (0.979, 0.973)            | 3                         |
-| level_two         | (0.973, 0.982)            | 3                         |
-| level_three       | (0.982, 0.987)            | 3                         |
-| expert_strategy   | (0.986, 0.889)            | 3                         |
+| level_two         | (0.973, 0.999)            | 3                         |
+| level_three       | (0.982, 0.999)            | 3                         |
+| expert_strategy   | (0.502, 0.500)            | 3                         |
 |                   |                           |                           | 
 | level_zero        | (0.803, 0.911)            | 5                         |  
 | pure_random       | (0.978, 0.963)            | 5                         |
-| level_two         | (0.963, 0.975)            | 5                         |
-| level_three       | (0.974, 0.980)            | 5                         |
-| expert_strategy   | (0.979, 0.812)            | 5                         |
+| level_two         | (0.963, 1.000)            | 5                         |
+| level_three       | (0.841, 0.980)            | 5                         |
+| expert_strategy   | (0.001, 0.002)            | 5                         |
 
 This results are impressive, in my opinion. I notice some inversion trend in the performance from one strategy to the other which may be seen in the plots, and I do not understand it, but I think it is still remarkably better than before.
 
@@ -204,7 +204,7 @@ I modified the `play_nim` and `evaluate` functions in order to evaluate the RL A
 | level_three       | (1.0, 0.0)                | 3                         |
 | expert_strategy   | (1.0, 0.0)                | 3                         |
 |                   |                           |                           |  
-| pure_random       | (0.9, 0.8)                | 5                         |
+| pure_random       | (0.9, 1.0)                | 5                         |
 | level_three       | (1.0, 1.0)                | 5                         |
 | expert_strategy   | (0.0, 0.0)                | 5                         |
 
@@ -214,11 +214,11 @@ And here are the results of the evaluation for the Agent which learns incrementa
 
 | Opponent Strategy | Starting (first, second)  | Nim Size                  |
 | ----------------- | ------------------------- | ------------------------- |  
-| pure_random       | (1.0, 1.0)                | 3                         |
-| level_three       | (1.0, 0.0)                | 3                         |
+| pure_random       | (1.0, 0.9)                | 3                         |
+| level_three       | (1.0, 1.0)                | 3                         |
 | expert_strategy   | (1.0, 0.0)                | 3                         |
 |                   |                           |                           |  
-| pure_random       | (1.0, 0.9)                | 5                         |
+| pure_random       | (1.0, 1.0)                | 5                         |
 | level_three       | (1.0, 0.0)                | 5                         |
 | expert_strategy   | (0.0, 0.0)                | 5                         |
 
